@@ -14,7 +14,7 @@
           <a href="roamingo.com">
             <div class="logo"></div>
           </a>
-          <div class="btn-menu btn-menu-desktop">
+          <div class="btn-menu">
             <a href="tel:995326000000" class="btn btn-light btn-regular">
               <div class="whatsapp-icon"></div>
               <div class="tel-info">
@@ -28,16 +28,7 @@
               <div class="lang-icon"></div>
               <span class="lang-label">Eng</span>
             </a>
-            <a href="#zaza" class="btn btn-green btn-regular">Download App</a>
-          </div>
-          <div class="btn-menu btn-menu-mobile">
-            <button class="btn btn-green btn-regular mobile-menu">
-              <div class="burger">
-                <span class="burger-dash"></span>
-                <span class="burger-dash"></span>
-                <span class="burger-dash"></span>
-              </div>
-            </button>
+            <!-- <a href="#zaza" class="btn btn-green btn-regular">Download App</a> -->
           </div>
         </nav>
       </header>
@@ -86,10 +77,10 @@
               <div class="gifts-desktop"></div>
             </div>
           </div>
-          <button class="scrolldown" id="scrolldown">
+          <!-- <button class="scrolldown" id="scrolldown">
             <div class="scrolldown-icon"></div>
             <span data-i18n="scrolldown">ქვემოთ ჩასქროლვა</span>
-          </button>
+          </button> -->
         </div>
         <div class="mobile-gifts"></div>
       </section>
@@ -149,19 +140,62 @@
           </div>
         </div>
         <div class="guide guide-mobile">
-          <div class="guide-item">
-            <div class="guide-image">
-              <img src="/images/guide-1.png" alt="" />
-              <div class="double-arrow-icon"></div>
+          <div id="guide-slider" class="guide-slider">
+            <div class="guide-item active">
+              <div class="guide-image">
+                <img src="/images/guide-1.png" alt="" />
+                <div class="double-arrow-icon"></div>
+              </div>
+              <div class="guide-info">
+                <span data-i18n="guide-1"
+                  >გახსენი აპლიკაცია, გადადი პროფილში და დააჭირე
+                  <strong>საჩუქრის გააქტიურებას</strong></span
+                >
+              </div>
             </div>
-            <div class="guide-info">
-              <span data-i18n="guide-1"
-                >გახსენი აპლიკაცია, გადადი პროფილში და დააჭირე
-                <strong>საჩუქრის გააქტიურებას</strong></span
-              >
+            <div class="guide-item">
+              <div class="guide-image">
+                <img src="/images/guide-2.png" alt="" />
+                <div class="double-arrow-icon"></div>
+              </div>
+              <div class="guide-info">
+                <span data-i18n="guide-2"
+                  >შეიყვანე სასაჩუქრე კოდი <strong>"EUROAMINGO"</strong> დააჭირე
+                  გააქტიურებას და დაელოდე რამდენიმე წამი</span
+                >
+              </div>
+            </div>
+            <div class="guide-item">
+              <div class="guide-image">
+                <img src="/images/guide-3.png" alt="" />
+                <div class="double-arrow-icon"></div>
+              </div>
+              <div class="guide-info">
+                <span data-i18n="guide-3"
+                  >საჩუქრის მისაღებად დააჭირე ღილაკს
+                  <strong>"მიღება"</strong></span
+                >
+              </div>
+            </div>
+            <div class="guide-item">
+              <div class="guide-image">
+                <img src="/images/guide-4.png" alt="" />
+              </div>
+              <div class="guide-info">
+                <span data-i18n="guide-4"
+                  >გერმანიის 1 გბ ინტერნეტი ავტომატურად დაემატა. დააჭირეთ ღილაკს
+                  <strong>"გააქტიურება"</strong> და მიყევით ინსტრუქციას</span
+                >
+              </div>
             </div>
           </div>
-          <!-- <button class="btn btn-green btn-regular">შემდეგი</button> -->
+          <button
+            id="next-slide-btn"
+            class="next-slide-btn btn btn-green btn-big btn-pill"
+          >
+            <span data-i18n="next">შემდეგი</span>
+            <div id="next-btn-icon" class="arrow-icon"></div>
+          </button>
         </div>
       </div>
     </main>

@@ -1,5 +1,10 @@
 import en from "./locales/en.json";
 
+const nextSlideBtn = document.querySelector("#next-slide-btn");
+const nextSlideBtnIcon = document.querySelector("#next-btn-icon");
+const nextSlideBtnLabel = nextSlideBtn?.querySelector("span") ?? null;
+const guideSlider = document.querySelector("#guide-slider");
+const guideSlides = guideSlider?.querySelectorAll<HTMLElement>(".guide-item");
 const copyBtn = document.querySelector("#copy");
 const copyLabel = document.querySelector("#copy .copy-label");
 const langElem = document.querySelector("#lang");
@@ -8,18 +13,52 @@ const langLabelElem = document.querySelector("#lang .lang-label");
 const isEn = new URL(location.href).searchParams.get("lang") === "en";
 const html = document.documentElement;
 
+let slideId = 0;
+
+nextSlideBtn?.addEventListener("click", (e) => {
+  slideId += 1;
+
+  if (slideId > 3) {
+    slideId = 0;
+  }
+
+  if (nextSlideBtnLabel) {
+    if (slideId === 3) {
+      nextSlideBtnLabel.innerHTML = isEn ? "Return" : "ახლიდან";
+      nextSlideBtnIcon?.classList.add("refresh-icon");
+      nextSlideBtnIcon?.classList.remove("arrow-icon");
+    } else {
+      nextSlideBtnLabel.innerHTML = isEn ? "Next" : "შემდეგი";
+      nextSlideBtnIcon?.classList.remove("refresh-icon");
+      nextSlideBtnIcon?.classList.add("arrow-icon");
+    }
+  }
+
+  if (guideSlides) {
+    guideSlides.forEach((el) => {
+      el.style.transform = `translate(-${slideId * 100}%, 0%) scale(0.9)`;
+      el.classList.remove("active");
+    });
+  }
+
+  const activeSlide = guideSlider?.querySelector<HTMLElement>(
+    `.guide-item:nth-of-type(${slideId + 1})`
+  );
+
+  if (activeSlide) {
+    activeSlide.style.transform = `translate(-${slideId * 100}%, 0%) scale(1)`;
+    activeSlide.classList.add("active");
+  }
+});
+
 const fallback = (text: string) => {
   const isIos = navigator.userAgent.match(/ipad|iphone/i);
   const textarea = document.createElement("textarea");
 
-  // create textarea
   textarea.value = text;
-
-  // ios will zoom in on the input if the font-size is < 16px
   textarea.style.fontSize = "20px";
   document.body.appendChild(textarea);
 
-  // select text
   if (isIos) {
     const range = document.createRange();
     range.selectNodeContents(textarea);
@@ -32,10 +71,8 @@ const fallback = (text: string) => {
     textarea.select();
   }
 
-  // copy selection
   document.execCommand("copy");
 
-  // cleanup
   document.body.removeChild(textarea);
 };
 
@@ -48,6 +85,11 @@ document.querySelector("#scrolldown")?.addEventListener("click", () => {
 copyBtn?.addEventListener("click", () => {
   if (!navigator.clipboard) {
     fallback("EUROAMINGO");
+
+    if (copyLabel) {
+      copyLabel.innerHTML = isEn ? "Copied!" : "დაკოპირდა!";
+    }
+
     return;
   }
 

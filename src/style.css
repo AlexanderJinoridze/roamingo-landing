@@ -108,7 +108,7 @@ section {
 }
 
 main {
-  padding: 3.375rem 1.125rem 4.25rem;
+  padding: 2.5rem 1.125rem 4.25rem;
   flex: 1;
 }
 
@@ -169,6 +169,12 @@ button {
 .btn-regular {
   height: 2.75rem;
   padding: 0 1rem;
+  border-radius: 0.625rem;
+}
+
+.btn-big {
+  height: 3.25rem;
+  padding: 0 1.5rem;
   border-radius: 0.625rem;
 }
 
@@ -368,10 +374,11 @@ html.locales-loaded .lang-label:before {
 
 .promocode-note {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: white;
 }
 
 .euro2024logo {
+  max-width: 640px;
   display: flex;
   justify-content: center;
   flex-grow: 1;
@@ -391,6 +398,7 @@ html.locales-loaded .lang-label:before {
 .welcome-main {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .gifts-desktop {
@@ -603,13 +611,61 @@ footer {
   display: none;
 }
 
+.next-slide-btn {
+  margin-bottom: 4px;
+  font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
+  margin-top: 2rem;
+}
+
+.arrow-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url(./imgs/arrow.svg);
+  margin-left: 0.5rem;
+}
+
+.refresh-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url(./imgs/refresh-icon.svg);
+  margin-left: 0.5rem;
+}
+
+.next-slide-btn .arrow-icon,
+.next-slide-btn .refresh-icon {
+  margin-right: -0.5rem;
+}
+
 @media all and (max-width: 1080px) {
+  .welcome-bottom {
+    text-align: center;
+  }
+
+  .guide.guide-mobile {
+    overflow: hidden;
+    margin: 0 -1.125rem;
+  }
+
   .guide.guide-desktop {
     display: none;
   }
 
+  .guide-item {
+    transition: all 1s;
+  }
+
+  .guide-item:not(.active) {
+    opacity: 0;
+  }
+
+  .guide-item.active {
+    opacity: 1;
+  }
+
   .guide.guide-mobile {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
 
@@ -717,9 +773,28 @@ footer {
   .guide-title {
     margin-bottom: 2rem;
   }
+
+  .guide-info {
+    max-width: 16rem;
+  }
+
+  .guide-slider {
+    width: 260px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  .guide-slider .guide-item {
+    min-width: 260px;
+  }
 }
 
 @media all and (max-width: 760px) {
+  .btn-menu a:first-of-type {
+    display: none;
+  }
+
   .welcome-title {
     font-size: 22px;
   }
@@ -740,7 +815,8 @@ footer {
   }
 
   .promocode-line {
-    margin-right: 0.725rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
   }
 
   .promocode-line-item {
@@ -749,17 +825,20 @@ footer {
     background-size: 1.5rem 2rem;
     font-size: 1.25rem;
   }
-
+  /* 
   .copy-label {
     display: none;
-  }
+  } */
 
-  .btn-small {
+  /* .btn-small {
     padding: 0 0.438rem;
-  }
+  } */
 
   .promocode-block {
     margin: 12px 0 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .guide-title {
